@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>妃之境｜身心靈瑜珈課表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ───────────── CSS VARIABLES ───────────── */
+:root {
+  --cream:       #F5EDE0;
+  --cream-light: #FAF5EE;
+  --cream-mid:   #EDE0CC;
+  --brown-deep:  #3D2B1F;
+  --brown-mid:   #6B4530;
+  --brown-light: #A07850;
+  --brown-pale:  #C8A882;
+  --accent:      #7A4F30;
+  --accent-bg:   #F0E4D4;
+  --accent-text: #6B3E22;
+  --dashed:      #C8A882;
+  --white:       #FDFAF5;
+  --font:        'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  --radius-lg:   20px;
+  --radius-md:   14px;
+  --radius-sm:   8px;
+  --shadow:      0 8px 40px rgba(61,43,31,0.10), 0 2px 8px rgba(61,43,31,0.05);
+}
+
+/* ───────────── RESET ───────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: var(--font);
+  background-color: var(--cream);
+  color: var(--brown-deep);
+  min-height: 100vh;
+  /* Subtle paper grain texture */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* ───────────── HEADER ───────────── */
+.site-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 32px 40px 0;
+  position: relative;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Logo Image */
+.logo-img {
+  width: 82px; height: 82px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-text { line-height: 1; }
+
+.brand-name {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--brown-deep);
+  margin-bottom: 6px;
+}
+
+.brand-sub {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.42em;
+  color: var(--brown-light);
+}
+
+/* ───────────── SCHEDULE SECTION ───────────── */
+.schedule-section {
+  padding: 28px 28px 48px;
+}
+
+.schedule-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Scroll wrapper for mobile */
+.scroll-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -4px;
+  padding: 0 4px 4px;
+}
+
+.scroll-wrap::-webkit-scrollbar { height: 4px; }
+.scroll-wrap::-webkit-scrollbar-track { background: var(--cream-mid); border-radius: 2px; }
+.scroll-wrap::-webkit-scrollbar-thumb { background: var(--brown-pale); border-radius: 2px; }
+
+/* ───────────── GRID ───────────── */
+.schedule-grid { min-width: 520px; }
+
+/* Header row */
+.grid-head {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-bottom: 1.5px solid var(--brown-deep);
+  padding-bottom: 14px;
+  margin-bottom: 4px;
+}
+
+.head-cell {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--brown-deep);
+  padding: 4px;
+}
+
+/* Time band (group of rows sharing same time block) */
+.time-band + .time-band {
+  border-top: 1px dashed var(--dashed);
+  margin-top: 4px;
+  padding-top: 4px;
+}
+
+.band-gap { height: 20px; }
+
+/* Each time row */
+.time-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: start;
+  padding: 10px 0 4px;
+}
+
+/* Each day cell */
+.day-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 2px 4px;
+  min-height: 52px;
+}
+
+/* Class block inside a cell */
+.class-block {
+  text-align: center;
+  line-height: 1.6;
+}
+
+.class-time {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--brown-deep);
+  letter-spacing: 0.04em;
+}
+
+.class-name-line {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--brown-mid);
+  letter-spacing: 0.08em;
+  white-space: pre-line;
+  word-break: break-all;
+}
+
+/* Highlighted class — warm circle badge */
+.class-block.is-highlight {
+  background: var(--brown-mid);
+  border-radius: 14px;
+  padding: 6px 8px 8px;
+  margin: 2px 0;
+  box-shadow: 0 3px 10px rgba(107,69,48,0.28);
+}
+
+.class-block.is-highlight .class-time {
+  color: rgba(255,252,245,0.92);
+  font-weight: 400;
+}
+
+.class-block.is-highlight .class-name-line {
+  color: rgba(255,252,245,0.82);
+  font-weight: 300;
+}
+
+/* ───────────── FOOTER NOTE ───────────── */
+.schedule-footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--cream-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.schedule-footer-text {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  color: var(--brown-light);
+}
+
+/* ───────────── ADMIN GEAR BTN ───────────── */
+.admin-trigger {
+  position: fixed;
+  bottom: 22px; right: 22px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: rgba(61,43,31,0.08);
+  border: 1px solid rgba(61,43,31,0.14);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  transition: background 0.25s, transform 0.2s;
+  z-index: 40;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  user-select: none;
+}
+
+.admin-trigger:hover { background: rgba(61,43,31,0.16); transform: rotate(20deg); }
+
+/* ───────────── MODAL OVERLAY ───────────── */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(39,26,18,0.55);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  width: 100%; max-width: 400px;
+  box-shadow: 0 24px 64px rgba(39,26,18,0.22);
+  animation: popIn 0.28s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes popIn {
+  from { opacity:0; transform:scale(0.92) translateY(12px); }
+  to   { opacity:1; transform:scale(1) translateY(0); }
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--brown-deep);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* ───────────── FORM ELEMENTS ───────────── */
+.form-group { margin-bottom: 16px; }
+
+.form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--brown-light);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--cream-mid);
+  border-radius: var(--radius-sm);
+  background: var(--cream-light);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--brown-deep);
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--brown-mid);
+  background: var(--white);
+}
+
+.form-textarea { min-height: 72px; resize: vertical; line-height: 1.6; }
+
+.form-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Toggle (highlight switch) */
+.toggle-wrap {
+  display: flex;
+  background: var(--cream-mid);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 3px;
+}
+
+.toggle-opt {
+  flex: 1; padding: 9px 6px;
+  border: none; background: transparent;
+  border-radius: 6px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--brown-light);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggle-opt.sel {
+  background: var(--white);
+  color: var(--brown-deep);
+  box-shadow: 0 1px 6px rgba(61,43,31,0.1);
+}
+
+/* ───────────── BUTTONS ───────────── */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%; padding: 13px 16px;
+  border: none; border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--brown-deep);
+  color: var(--white);
+}
+.btn-primary:hover { background: var(--brown-mid); }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--brown-mid);
+  border: 1.5px solid var(--cream-mid);
+}
+.btn-ghost:hover { border-color: var(--brown-pale); background: var(--cream-light); }
+
+.btn-danger {
+  background: transparent;
+  color: #B91C1C;
+  border: 1.5px solid #FECACA;
+}
+.btn-danger:hover { background: #FEF2F2; }
+
+.btn-row { display: flex; gap: 10px; margin-top: 4px; }
+.btn-row .btn { flex: 1; }
+
+.btn-sm {
+  width: auto;
+  padding: 8px 18px;
+  font-size: 13px;
+}
+
+/* ───────────── ADMIN PANEL ───────────── */
+.admin-panel {
+  display: none;
+  position: fixed; inset: 0;
+  background: var(--cream);
+  z-index: 200;
+  overflow-y: auto;
+  animation: fadeSlide 0.3s ease;
+}
+
+@keyframes fadeSlide {
+  from { opacity:0; transform:translateX(20px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+
+.admin-panel.open { display: block; }
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  background: var(--white);
+  border-bottom: 1px solid var(--cream-mid);
+  position: sticky; top: 0; z-index: 10;
+  box-shadow: 0 2px 10px rgba(61,43,31,0.05);
+}
+
+.admin-topbar-title {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--brown-deep);
+}
+
+.admin-body {
+  padding: 24px 20px 60px;
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+/* Section label */
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--brown-light);
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--cream-mid);
+  margin: 28px 0 14px;
+}
+
+.section-label:first-child { margin-top: 0; }
+
+/* Form card */
+.form-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 12px rgba(61,43,31,0.05);
+}
+
+/* Class item row */
+.class-item {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 2px 8px rgba(61,43,31,0.04);
+  transition: box-shadow 0.2s;
+}
+
+.class-item:hover { box-shadow: 0 4px 16px rgba(61,43,31,0.08); }
+
+.class-item-left { flex: 1; min-width: 0; }
+
+.class-item-day {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--brown-light);
+  margin-bottom: 3px;
+}
+
+.class-item-name {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--brown-deep);
+  letter-spacing: 0.06em;
+}
+
+.class-item-name.hl { color: var(--accent-text); }
+
+.class-item-time {
+  font-size: 12px;
+  color: var(--brown-pale);
+  margin-top: 2px;
+  letter-spacing: 0.08em;
+}
+
+.hl-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent-text);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.item-actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+.icon-btn {
+  width: 34px; height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--cream-mid);
+  background: transparent;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.icon-btn:hover { background: var(--cream-mid); }
+.icon-btn.del:hover { background: #FEF2F2; border-color: #FECACA; }
+
+.empty-msg {
+  text-align: center;
+  color: var(--brown-pale);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  padding: 32px 20px;
+}
+
+/* ───────────── TOAST ───────────── */
+.toast {
+  position: fixed;
+  top: 24px; left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background: var(--brown-deep);
+  color: var(--white);
+  padding: 11px 28px;
+  border-radius: 40px;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  animation: toastIn 0.3s ease;
+}
+
+@keyframes toastIn {
+  from { opacity:0; transform:translateX(-50%) translateY(-8px); }
+  to   { opacity:1; transform:translateX(-50%) translateY(0); }
+}
+
+/* ───────────── RWD ───────────── */
+@media (max-width: 640px) {
+  .site-header      { padding: 18px 16px 0; }
+  .logo-img         { width:62px; height:62px; }
+  .brand-name       { font-size:22px; }
+  .brand-sub        { font-size:11px; }
+  .schedule-section { padding: 20px 14px 40px; }
+  .schedule-card    { padding: 20px 14px 18px; border-radius: var(--radius-md); }
+  .head-cell        { font-size:13px; }
+  .class-time       { font-size:13px; }
+  .class-name-line  { font-size:11px; }
+  .day-cell         { min-height:44px; padding:2px 2px; }
+  .admin-body       { padding:16px 14px 60px; }
+  .form-2col        { grid-template-columns:1fr; }
+  .modal-box        { padding:24px 18px; }
+  .admin-topbar     { padding:16px 18px; }
+  .cal-grid         { gap:3px; }
+  .cal-cell         { padding:4px 2px; }
+  .cal-day-num      { font-size:11px; }
+  .cal-pill         { font-size:9px; padding:2px 4px; }
+}
+
+@media (max-width: 360px) {
+  .brand-name { font-size:20px; }
+  .schedule-card { padding:16px 10px 16px; }
+}
+
+/* ── Save button in topbar ── */
+.btn-save {
+  background: linear-gradient(135deg, #7A4F30 0%, #A07850 100%);
+  color: var(--white);
+  border: none;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  box-shadow: 0 3px 12px rgba(107,69,48,0.35);
+}
+.btn-save:hover {
+  background: linear-gradient(135deg, #6B4530 0%, #8B6840 100%);
+  box-shadow: 0 5px 18px rgba(107,69,48,0.42);
+  transform: translateY(-1px);
+}
+.btn-save:active { transform: scale(0.97); }
+
+/* ── Calendar pill with actions ── */
+.cal-pill-wrap {
+  position: relative;
+  margin-bottom: 3px;
+}
+
+.cal-pill {
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  padding: 4px 22px 4px 5px; /* right padding leaves room for × */
+  border-radius: 6px;
+  line-height: 1.35;
+  text-align: left;
+  word-break: break-all;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.cal-pill:hover { opacity: 0.82; }
+
+.cal-pill.normal    { background: var(--cream-mid); color: var(--brown-mid); }
+.cal-pill.highlight { background: var(--brown-mid); color: var(--white); }
+
+/* Micro delete × on pill */
+.cal-pill-del {
+  position: absolute;
+  top: 50%; right: 3px;
+  transform: translateY(-50%);
+  width: 16px; height: 16px;
+  border-radius: 3px;
+  border: none;
+  background: rgba(0,0,0,0.12);
+  color: inherit;
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.15s, background 0.15s;
+  padding: 0;
+  flex-shrink: 0;
+}
+.cal-pill-del:hover { opacity: 1; background: rgba(185,28,28,0.18); color: #B91C1C; }
+
+/* ── Confirm save modal ── */
+.modal-icon {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.modal-confirm-msg {
+  text-align: center;
+  color: var(--brown-light);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+
+/* ───────────── CALENDAR VIEW (Admin) ───────────── */
+.cal-view-wrap { margin-bottom: 0; }
+
+/* Tab switcher */
+.view-tabs {
+  display: flex;
+  background: var(--cream-mid);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+
+.view-tab {
+  flex: 1;
+  padding: 9px 6px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--brown-light);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-tab.sel {
+  background: var(--white);
+  color: var(--brown-deep);
+  font-weight: 400;
+  box-shadow: 0 1px 6px rgba(61,43,31,0.1);
+}
+
+/* Calendar grid */
+.cal-header-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.cal-head-cell {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--brown-light);
+  padding: 6px 2px;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+}
+
+.cal-cell {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 8px 5px 6px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-shadow: 0 1px 4px rgba(61,43,31,0.05);
+  cursor: pointer;
+  transition: box-shadow 0.18s, transform 0.15s;
+  position: relative;
+}
+
+.cal-cell:hover {
+  box-shadow: 0 4px 14px rgba(61,43,31,0.10);
+  transform: translateY(-1px);
+}
+
+.cal-day-num {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--brown-deep);
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--cream-mid);
+  margin-bottom: 3px;
+}
+
+.cal-add-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 3px 0;
+  border: 1px dashed var(--cream-mid);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--brown-pale);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font);
+}
+
+.cal-add-btn:hover {
+  border-color: var(--brown-pale);
+  color: var(--brown-mid);
+  background: var(--cream-light);
+}
+
+/* List view (hidden by default) */
+.list-view { display: none; }
+.list-view.active { display: block; }
+.cal-view { display: none; }
+.cal-view.active { display: block; }
+
+/* ───────────── BRAND HERO ───────────── */
+.brand-hero {
+  text-align: center;
+  padding: 44px 20px 28px;
+}
+.brand-hero-name {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.55em;
+  color: var(--brown-deep);
+  line-height: 1.15;
+  margin-bottom: 10px;
+  /* subtle text shadow for depth */
+  text-shadow: 0 1px 0 rgba(255,255,255,0.7);
+}
+.brand-hero-sep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.brand-hero-sep::before,
+.brand-hero-sep::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--brown-pale);
+}
+.brand-hero-sep-dot {
+  font-size: 10px;
+  color: var(--brown-pale);
+  letter-spacing: 0.1em;
+}
+.brand-hero-sub {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.55em;
+  color: var(--brown-light);
+  line-height: 1;
+}
+
+/* ───────────── SECTION HEADINGS ───────────── */
+/* Shared base for price title & schedule divider */
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 32px 28px 0;
+  max-width: 660px;
+  margin: 0 auto;
+}
+.section-heading::before,
+.section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--brown-pale));
+}
+.section-heading::after {
+  background: linear-gradient(to left, transparent, var(--brown-pale));
+}
+.section-heading-text {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  color: var(--brown-mid);
+  white-space: nowrap;
+  text-indent: 0.42em; /* compensate for letter-spacing on last char */
+}
+
+/* ───────────── SCHEDULE DIVIDER (reuse section-heading) ───────────── */
+.schedule-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 32px 28px 0;
+  max-width: 660px;
+  margin: 0 auto;
+}
+.schedule-divider::before,
+.schedule-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--brown-pale));
+}
+.schedule-divider::after {
+  background: linear-gradient(to left, transparent, var(--brown-pale));
+}
+.schedule-divider-text {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  color: var(--brown-mid);
+  white-space: nowrap;
+  text-indent: 0.42em;
+}
+
+
+/* ───────────── PRICE CATEGORY TABS ───────────── */
+.price-cat-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 16px 20px 0;
+}
+.price-cat-wrap::-webkit-scrollbar { display: none; }
+.price-cat-row {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+  padding-bottom: 2px;
+}
+.price-cat-btn {
+  padding: 8px 18px;
+  border-radius: 40px;
+  border: 1.5px solid var(--cream-mid);
+  background: transparent;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--brown-light);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.price-cat-btn.sel {
+  background: var(--brown-mid);
+  border-color: var(--brown-mid);
+  color: var(--white);
+  font-weight: 400;
+}
+.price-cat-btn:hover:not(.sel) { border-color: var(--brown-pale); color: var(--brown-mid); }
+
+.price-page-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 32px 28px 0;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  color: var(--brown-mid);
+  text-indent: 0.42em;
+}
+.price-page-title::before,
+.price-page-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--brown-pale));
+}
+.price-page-title::after {
+  background: linear-gradient(to left, transparent, var(--brown-pale));
+}
+.price-page { padding: 0 20px 32px; max-width: 660px; margin: 0 auto; }
+.price-private-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px 18px;
+  box-shadow: var(--shadow);
+  margin-top: 16px;
+}
+.price-section-title {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--brown-light);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--cream-mid);
+}
+.price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cream-mid);
+  gap: 12px;
+}
+.price-row:last-child { border-bottom: none; }
+.price-row-name {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--brown-deep);
+}
+.price-row-right {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.price-amount {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--brown-mid);
+  letter-spacing: 0.06em;
+}
+.price-note {
+  font-size: 11px;
+  color: var(--brown-pale);
+  letter-spacing: 0.1em;
+}
+.price-group-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px 18px;
+  box-shadow: var(--shadow);
+  margin-top: 16px;
+}
+.price-group-title {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--brown-light);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--cream-mid);
+}
+.price-group-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--cream-mid);
+  flex-wrap: wrap;
+}
+.price-group-item:last-child { border-bottom: none; }
+.price-group-label {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--brown-deep);
+  letter-spacing: 0.08em;
+  flex: 1;
+}
+.price-group-val {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--brown-mid);
+  letter-spacing: 0.06em;
+}
+.price-group-badge {
+  display: inline-block;
+  background: var(--brown-mid);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  padding: 3px 12px;
+  border-radius: 20px;
+}
+.price-group-expire {
+  font-size: 11px;
+  color: var(--brown-pale);
+  letter-spacing: 0.1em;
+}
+.price-policy {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--brown-pale);
+  line-height: 2;
+  padding: 16px;
+  border: 1px dashed var(--cream-mid);
+  border-radius: var(--radius-md);
+}
+
+/* ───────────── ADMIN TABS ───────────── */
+.admin-page-tabs {
+  display: flex;
+  background: var(--cream-mid);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 3px;
+  margin-bottom: 24px;
+}
+.admin-page-tab {
+  flex: 1;
+  padding: 10px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--brown-light);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.admin-page-tab.sel {
+  background: var(--white);
+  color: var(--brown-deep);
+  font-weight: 500;
+  box-shadow: 0 1px 6px rgba(61,43,31,0.1);
+}
+.admin-sub-page { display: none; }
+.admin-sub-page.active { display: block; }
+
+/* ───────────── PKG FIELDS ───────────── */
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px 0 2px;
+}
+.checkbox-row input[type=checkbox] {
+  width: 16px; height: 16px;
+  accent-color: var(--brown-mid);
+  cursor: pointer;
+}
+.checkbox-row-label {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--brown-mid);
+}
+.pkg-fields {
+  display: none;
+  margin-top: 12px;
+  padding: 14px 16px;
+  background: var(--cream-light);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--cream-mid);
+}
+.pkg-fields.show { display: block; }
+.section-add-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.section-add-row .form-input,
+.section-add-row .form-select { flex: 1; }
+
+/* ───────────── PRINT ───────────── */
+@media print {
+  .admin-trigger, .toast, .admin-panel, .modal-overlay { display:none !important; }
+  body { background:#fff; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── TOAST ─────────────────── -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════════════════════════════════════
+     BRAND HERO
+═══════════════════════════════════════════════ -->
+<div class="brand-hero">
+  <div class="brand-hero-name">妃 之 境</div>
+  <div class="brand-hero-sep"><span class="brand-hero-sep-dot">✦</span></div>
+  <div class="brand-hero-sub">身 心 靈 瑜 珈</div>
+</div>
+
+<!-- FRONT NAV removed — single scroll layout -->
+
+<!-- ═══════════════════════════════════════════════
+     FRONT: PRICE LIST
+═══════════════════════════════════════════════ -->
+<div class="price-page-title">課 程 價 目 表</div>
+<div class="price-page">
+  <div id="price-render"></div>
+  <div class="price-policy" id="price-policy-text"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     FRONT: SCHEDULE
+═══════════════════════════════════════════════ -->
+<div class="schedule-divider">
+  <span class="schedule-divider-text">課 表</span>
+</div>
+<section class="schedule-section">
+  <div class="schedule-card">
+    <div class="scroll-wrap">
+      <div class="schedule-grid" id="schedule-grid"></div>
+    </div>
+    <div class="schedule-footer">
+      <span style="color:var(--brown-pale);font-size:13px;">✦</span>
+      <div class="schedule-footer-text" id="schedule-note"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Admin trigger gear button -->
+<button class="admin-trigger" onclick="openPwModal()" title="後台管理" aria-label="後台管理">⚙</button>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL: PASSWORD
+═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-pw" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-title">後 台 管 理</div>
+    <div class="form-group">
+      <label class="form-label" for="pw-input">管理密碼</label>
+      <input type="password" class="form-input" id="pw-input"
+             placeholder="請輸入密碼"
+             autocomplete="current-password"
+             onkeydown="if(event.key==='Enter')checkPw()">
+    </div>
+    <div id="pw-err" style="display:none;text-align:center;font-size:12px;color:#B91C1C;margin-bottom:12px;letter-spacing:0.1em;">密碼錯誤，請重試</div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="closeModal('modal-pw')">取消</button>
+      <button class="btn btn-primary" onclick="checkPw()">進入後台</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL: EDIT CLASS
+═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-edit" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-title">編 輯 課 程</div>
+    <input type="hidden" id="edit-cid">
+    <div class="form-2col">
+      <div class="form-group">
+        <label class="form-label" for="edit-day">星期</label>
+        <select class="form-select" id="edit-day">
+          <option value="1">週一</option>
+          <option value="2">週二</option>
+          <option value="3">週三</option>
+          <option value="4">週四</option>
+          <option value="5">週五</option>
+          <option value="6">週六</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-time">時間</label>
+        <input type="time" class="form-input" id="edit-time">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="edit-name">課程名稱</label>
+      <input type="text" class="form-input" id="edit-name" placeholder="例：器械皮拉提斯">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Highlight 標注</label>
+      <div class="toggle-wrap">
+        <button class="toggle-opt" id="ehl-off" onclick="setHL('edit',false)">一般</button>
+        <button class="toggle-opt" id="ehl-on"  onclick="setHL('edit',true)">✦ Highlight</button>
+      </div>
+      <input type="hidden" id="edit-hl" value="false">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="closeModal('modal-edit')">取消</button>
+      <button class="btn btn-danger" onclick="openDelFromEdit()">🗑 刪除</button>
+      <button class="btn btn-primary" onclick="saveEdit()">儲存更新</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL: DELETE CONFIRM
+═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-del" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-title">刪 除 課 程</div>
+    <p style="text-align:center;color:var(--brown-light);font-size:13px;letter-spacing:0.12em;margin-bottom:24px;line-height:1.8;">
+      確定要移除這堂課程嗎？<br>此操作無法復原。
+    </p>
+    <input type="hidden" id="del-cid">
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="closeModal('modal-del')">取消</button>
+      <button class="btn btn-danger" onclick="confirmDel()">確認刪除</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL: SAVE & CONFIRM BACK
+═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-save-confirm" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-icon">✦</div>
+    <div class="modal-title">課表已儲存</div>
+    <div class="modal-confirm-msg">
+      所有變更已成功儲存。<br>
+      是否返回前台課表頁面？
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="closeModal('modal-save-confirm')">繼續編輯</button>
+      <button class="btn btn-save"  onclick="confirmSaveBack()">返回課表 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL: EDIT PRICE
+═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-price-edit" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-title">編 輯 價 目</div>
+    <input type="hidden" id="ep-id">
+    <div class="form-group">
+      <label class="form-label">分類</label>
+      <select class="form-select" id="ep-section"></select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="ep-label">項目名稱</label>
+      <input type="text" class="form-input" id="ep-label">
+    </div>
+    <div class="form-2col">
+      <div class="form-group">
+        <label class="form-label" for="ep-price">單堂價格</label>
+        <input type="text" class="form-input" id="ep-price" placeholder="例：$1,800">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ep-expire">效期備註</label>
+        <input type="text" class="form-input" id="ep-expire" placeholder="期限 6 個月（選填）">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="checkbox-row">
+        <input type="checkbox" id="ep-has-pkg" onchange="togglePkg('edit')">
+        <span class="checkbox-row-label">✦ 此項目有期課方案</span>
+      </label>
+      <div class="pkg-fields" id="pkg-fields-edit">
+        <div class="form-2col" style="margin-bottom:10px;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="ep-pkg-sessions">一期堂數</label>
+            <input type="text" class="form-input" id="ep-pkg-sessions" placeholder="例：8 堂">
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="ep-pkg-price">期課價格</label>
+            <input type="text" class="form-input" id="ep-pkg-price" placeholder="例：$3,200">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label" for="ep-pkg-expire">期課效期</label>
+          <input type="text" class="form-input" id="ep-pkg-expire" placeholder="例：期限 2 個月">
+        </div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost"  onclick="closeModal('modal-price-edit')">取消</button>
+      <button class="btn btn-danger" onclick="openDelPrice()">🗑 刪除</button>
+      <button class="btn btn-primary" onclick="savePriceEdit()">儲存更新</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL: DELETE PRICE
+═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-price-del" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-title">刪 除 價 目</div>
+    <p style="text-align:center;color:var(--brown-light);font-size:13px;letter-spacing:0.12em;margin-bottom:24px;line-height:1.8;">
+      確定要移除此項目嗎？<br>此操作無法復原。
+    </p>
+    <input type="hidden" id="del-pid">
+    <div class="btn-row">
+      <button class="btn btn-ghost"  onclick="closeModal('modal-price-del')">取消</button>
+      <button class="btn btn-danger" onclick="confirmDelPrice()">確認刪除</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     ADMIN PANEL
+═══════════════════════════════════════════════ -->
+<div class="admin-panel" id="admin-panel">
+  <div class="admin-topbar">
+    <div class="admin-topbar-title">✦ 課表後台管理</div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="btn btn-ghost btn-sm" onclick="closeAdmin()">← 返回課表</button>
+      <button class="btn btn-save btn-sm" onclick="openSaveConfirm()">✦ 儲存變更</button>
+    </div>
+  </div>
+
+  <div class="admin-body">
+
+    <!-- Admin page tabs -->
+    <div class="admin-page-tabs">
+      <button class="admin-page-tab sel" id="atab-price"    onclick="switchAdminTab('price')">💰 價目管理</button>
+      <button class="admin-page-tab"     id="atab-schedule" onclick="switchAdminTab('schedule')">📅 課表管理</button>
+    </div>
+
+    <!-- ══ 價目管理 ══ -->
+    <div class="admin-sub-page active" id="apage-price">
+
+      <!-- Section selector -->
+      <div class="section-label">選擇分類</div>
+      <div class="section-add-row">
+        <select class="form-select" id="p-section-sel" onchange="onSectionSel()">
+          <option value="">— 選擇分類 —</option>
+        </select>
+        <button class="btn btn-ghost btn-sm" onclick="showAddSection()">＋ 新增</button>
+      </div>
+      <div id="new-section-row" style="display:none;margin-bottom:12px;">
+        <div class="section-add-row">
+          <input type="text" class="form-input" id="new-section-input" placeholder="輸入新分類名稱">
+          <button class="btn btn-primary btn-sm" onclick="confirmAddSection()">確認</button>
+        </div>
+      </div>
+
+      <!-- Add price item -->
+      <div class="section-label">新增價目項目</div>
+      <div class="form-card">
+        <div class="form-group">
+          <label class="form-label" for="p-label">項目名稱</label>
+          <input type="text" class="form-input" id="p-label" placeholder="例：一對一瑜珈 / 單堂體驗">
+        </div>
+        <div class="form-2col">
+          <div class="form-group">
+            <label class="form-label" for="p-price">單堂價格</label>
+            <input type="text" class="form-input" id="p-price" placeholder="例：$1,800">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="p-expire">效期備註</label>
+            <input type="text" class="form-input" id="p-expire" placeholder="期限 6 個月（選填）">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="checkbox-row">
+            <input type="checkbox" id="p-has-pkg" onchange="togglePkg('add')">
+            <span class="checkbox-row-label">✦ 此項目有期課方案</span>
+          </label>
+          <div class="pkg-fields" id="pkg-fields-add">
+            <div class="form-2col" style="margin-bottom:10px;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="p-pkg-sessions">一期堂數</label>
+                <input type="text" class="form-input" id="p-pkg-sessions" placeholder="例：8 堂">
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="p-pkg-price">期課價格</label>
+                <input type="text" class="form-input" id="p-pkg-price" placeholder="例：$3,200">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label" for="p-pkg-expire">期課效期</label>
+              <input type="text" class="form-input" id="p-pkg-expire" placeholder="例：期限 2 個月">
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="doAddPrice()">＋ 新增項目</button>
+      </div>
+
+      <!-- Price policy -->
+      <div class="section-label">備註說明</div>
+      <div class="form-card">
+        <div class="form-group">
+          <textarea class="form-textarea" id="price-policy-input" placeholder="若因個人因素請假不補課…"></textarea>
+        </div>
+        <button class="btn btn-ghost" onclick="savePricePolicy()">儲存備註</button>
+      </div>
+
+      <!-- Price category filter -->
+      <div class="section-label">已上架價目</div>
+      <div class="price-cat-wrap" style="margin:0 0 12px;">
+        <div class="price-cat-row" id="admin-price-cat-row"></div>
+      </div>
+      <div id="admin-price-list"></div>
+
+    </div><!-- /apage-price -->
+
+    <!-- ══ 課表管理 ══ -->
+    <div class="admin-sub-page" id="apage-schedule">
+
+    <!-- ADD NEW CLASS -->
+    <div class="section-label">新增課程</div>
+    <div class="form-card">
+      <div class="form-2col">
+        <div class="form-group">
+          <label class="form-label" for="add-day">星期</label>
+          <select class="form-select" id="add-day">
+            <option value="1">週一</option>
+            <option value="2">週二</option>
+            <option value="3">週三</option>
+            <option value="4">週四</option>
+            <option value="5">週五</option>
+            <option value="6">週六</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="add-time">時間</label>
+          <input type="time" class="form-input" id="add-time" value="10:00">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="add-name">課程名稱</label>
+        <input type="text" class="form-input" id="add-name" placeholder="例：器械皮拉提斯">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Highlight 標注</label>
+        <div class="toggle-wrap">
+          <button class="toggle-opt sel" id="ahl-off" onclick="setHL('add',false)">一般</button>
+          <button class="toggle-opt"     id="ahl-on"  onclick="setHL('add',true)">✦ Highlight</button>
+        </div>
+        <input type="hidden" id="add-hl" value="false">
+      </div>
+      <button class="btn btn-primary" onclick="doAddClass()">＋ 新增課程</button>
+    </div>
+
+    <!-- CLASS LIST + CALENDAR VIEW -->
+    <div class="section-label">已上架課程</div>
+
+    <!-- View switcher -->
+    <div class="view-tabs">
+      <button class="view-tab sel" id="tab-cal"  onclick="switchView('cal')">📅 日曆檢視</button>
+      <button class="view-tab"     id="tab-list" onclick="switchView('list')">☰ 列表檢視</button>
+    </div>
+
+    <!-- CALENDAR VIEW -->
+    <div class="cal-view active" id="view-cal">
+      <div class="form-card" style="padding:16px 12px;">
+        <div class="cal-header-row">
+          <div class="cal-head-cell">週一</div>
+          <div class="cal-head-cell">週二</div>
+          <div class="cal-head-cell">週三</div>
+          <div class="cal-head-cell">週四</div>
+          <div class="cal-head-cell">週五</div>
+          <div class="cal-head-cell">週六</div>
+        </div>
+        <div class="cal-grid" id="admin-calendar"></div>
+        <p style="text-align:center;font-size:11px;color:var(--brown-pale);letter-spacing:0.1em;margin-top:12px;">點擊課程標籤可編輯，點擊「＋」可新增</p>
+      </div>
+    </div>
+
+    <!-- LIST VIEW -->
+    <div class="list-view" id="view-list">
+      <div id="admin-list"></div>
+    </div>
+
+    <!-- FOOTER NOTE — moved here below the class list -->
+    <div class="section-label" style="margin-top:28px;">頁尾備註</div>
+    <div class="form-card">
+      <div class="form-group">
+        <label class="form-label" for="note-input">備註文字</label>
+        <input type="text" class="form-input" id="note-input"
+               placeholder="小班制｜2人成班…">
+      </div>
+      <button class="btn btn-ghost" onclick="saveNote()" style="margin-top:4px;">儲存備註</button>
+    </div>
+
+    </div><!-- /apage-schedule -->
+
+  </div><!-- /admin-body -->
+</div><!-- /admin-panel -->
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+// ── CONSTANTS ─────────────────────────────────
+const PW        = 'fei8888';
+const DAY_NAMES = ['','週一','週二','週三','週四','週五','週六'];
+const LS_KEY    = 'fzj_v5';
+
+// ── DEFAULT DATA ──────────────────────────────
+const DEFAULT_SECTIONS = ['私教課','瑜珈團課','器械皮拉提斯團課','音缽療癒'];
+const DEFAULT = {
+  note: '小班制｜2 人成班，每週固定時間、課程 60 分鐘',
+  pricePolicy: '若因個人因素請假不補課、延期及退費\n課程須於當月份內完成，不延長或保留至下月',
+  priceSections: ['私教課','瑜珈團課','器械皮拉提斯團課','音缽療癒'],
+  prices: [
+    { id:'p01', section:'私教課', label:'一對一瑜珈',          unitPrice:'$1,800', expire:'期限 6 個月', hasPkg:false, pkgSessions:'', pkgPrice:'', pkgExpire:'' },
+    { id:'p02', section:'私教課', label:'一對一器械皮拉提斯',  unitPrice:'$2,000', expire:'期限 6 個月', hasPkg:false, pkgSessions:'', pkgPrice:'', pkgExpire:'' },
+    { id:'p03', section:'私教課', label:'一對二器械皮拉提斯',  unitPrice:'$2,500', expire:'期限 6 個月', hasPkg:false, pkgSessions:'', pkgPrice:'', pkgExpire:'' },
+    { id:'p04', section:'瑜珈團課',         label:'單堂體驗',  unitPrice:'$500',   expire:'', hasPkg:true, pkgSessions:'8 堂', pkgPrice:'$3,200', pkgExpire:'期限 2 個月' },
+    { id:'p05', section:'器械皮拉提斯團課', label:'單堂體驗',  unitPrice:'$1,000', expire:'', hasPkg:true, pkgSessions:'4 堂', pkgPrice:'$3,200', pkgExpire:'期限 1 個月' },
+    { id:'p06', section:'音缽療癒',         label:'單堂',       unitPrice:'$2,500', expire:'', hasPkg:false, pkgSessions:'', pkgPrice:'', pkgExpire:'' },
+  ],
+  classes: [
+    { id:'c01', day:2, time:'10:00', name:'器械皮拉提斯', hl:false },
+    { id:'c02', day:4, time:'10:00', name:'器械皮拉提斯', hl:false },
+    { id:'c03', day:6, time:'10:00', name:'器械皮拉提斯', hl:false },
+    { id:'c04', day:2, time:'11:10', name:'器械皮拉提斯', hl:false },
+    { id:'c05', day:4, time:'11:10', name:'器械皮拉提斯', hl:false },
+    { id:'c06', day:5, time:'11:10', name:'器械皮拉提斯', hl:false },
+    { id:'c07', day:6, time:'11:10', name:'器械皮拉提斯', hl:false },
+    { id:'c08', day:2, time:'17:00', name:'器械皮拉提斯', hl:false },
+    { id:'c09', day:4, time:'17:00', name:'器械皮拉提斯', hl:false },
+    { id:'c10', day:1, time:'18:00', name:'器械皮拉提斯', hl:false },
+    { id:'c11', day:2, time:'18:00', name:'器械皮拉提斯', hl:false },
+    { id:'c12', day:3, time:'18:00', name:'器械皮拉提斯', hl:false },
+    { id:'c13', day:4, time:'18:00', name:'器械皮拉提斯', hl:false },
+    { id:'c14', day:5, time:'18:00', name:'椅子瑜珈',     hl:true  },
+    { id:'c15', day:1, time:'19:30', name:'器械皮拉提斯', hl:false },
+    { id:'c16', day:2, time:'19:30', name:'器械皮拉提斯', hl:false },
+    { id:'c17', day:3, time:'19:30', name:'器械皮拉提斯', hl:false },
+    { id:'c18', day:4, time:'19:30', name:'器械皮拉提斯', hl:false },
+    { id:'c19', day:5, time:'19:30', name:'頌缽瑜珈',     hl:true  },
+  ]
+};
+
+// ── STATE ─────────────────────────────────────
+let state = { classes: [], note: '' };
+
+// ── PERSISTENCE ───────────────────────────────
+function load() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (raw) {
+      state = JSON.parse(raw);
+    } else {
+      state = JSON.parse(JSON.stringify(DEFAULT));
+    }
+  } catch {
+    state = JSON.parse(JSON.stringify(DEFAULT));
+  }
+}
+
+function save() {
+  localStorage.setItem(LS_KEY, JSON.stringify(state));
+}
+
+// ── ID GEN ────────────────────────────────────
+function uid() { return 'c' + Date.now() + Math.random().toString(36).slice(2,5); }
+
+// ── PRICE RENDER (all sections, single scroll) ────
+function renderPrices() {
+  const el    = document.getElementById('price-render');
+  const polEl = document.getElementById('price-policy-text');
+  if (polEl) polEl.innerHTML = (state.pricePolicy || '').replace(/\n/g, '<br>');
+  if (!el) return;
+
+  const secs   = state.priceSections || [];
+  const prices = state.prices || [];
+  if (!secs.length || !prices.length) {
+    el.innerHTML = '<p style="text-align:center;padding:24px;color:var(--brown-pale);font-size:13px;letter-spacing:0.1em;">尚無價目資料</p>';
+    return;
+  }
+
+  let html = '';
+  secs.forEach(sec => {
+    const items = prices.filter(p => p.section === sec);
+    if (!items.length) return;
+
+    if (sec === '私教課') {
+      html += `<div class="price-private-card"><div class="price-section-title">${escHtml(sec)}</div>`;
+      items.forEach(p => {
+        html += `<div class="price-row">
+          <span class="price-row-name">${escHtml(p.label)}</span>
+          <div class="price-row-right">
+            <span class="price-amount">${escHtml(p.unitPrice)}</span>
+            ${p.expire ? `<span class="price-note">（${escHtml(p.expire)}）</span>` : ''}
+          </div></div>`;
+      });
+      html += '</div>';
+    } else {
+      html += `<div class="price-group-card"><div class="price-group-title">${escHtml(sec)}</div>`;
+      items.forEach(p => {
+        html += `<div class="price-group-item">
+          <span class="price-group-label">${escHtml(p.label)}</span>
+          <span class="price-group-val">${escHtml(p.unitPrice)}</span>
+          ${p.expire ? `<span class="price-group-expire">${escHtml(p.expire)}</span>` : ''}
+        </div>`;
+        if (p.hasPkg && p.pkgPrice) {
+          html += `<div class="price-group-item" style="padding-left:12px;background:var(--cream-light);border-radius:6px;margin:4px 0;">
+            <span class="price-group-label" style="color:var(--brown-light);">一期 ${escHtml(p.pkgSessions || '')}</span>
+            <span class="price-group-badge">${escHtml(p.pkgPrice)}</span>
+            ${p.pkgExpire ? `<span class="price-group-expire">${escHtml(p.pkgExpire)}</span>` : ''}
+          </div>`;
+        }
+      });
+      html += '</div>';
+    }
+  });
+
+  el.innerHTML = html || '<p style="text-align:center;padding:24px;color:var(--brown-pale);font-size:13px;letter-spacing:0.1em;">尚無價目資料</p>';
+}
+
+// ── ADMIN PRICE CATEGORY FILTER ───────────────
+let adminPriceCat = null;
+
+function renderAdminPriceCatTabs() {
+  const row = document.getElementById('admin-price-cat-row');
+  if (!row) return;
+  const secs = state.priceSections || [];
+  if (!adminPriceCat || !secs.includes(adminPriceCat)) adminPriceCat = secs[0] || null;
+  row.innerHTML = ['全部', ...secs].map(s => {
+    const isSel = (s === '全部' && adminPriceCat === null) || s === adminPriceCat;
+    return `<button class="price-cat-btn${isSel ? ' sel' : ''}"
+      onclick="selectAdminPriceCat(${s === '全部' ? 'null' : `'${escHtml(s)}'`})">${escHtml(s)}</button>`;
+  }).join('');
+}
+
+function selectAdminPriceCat(sec) {
+  adminPriceCat = sec;
+  // also pre-fill add form section if not null
+  const sel = document.getElementById('p-section-sel');
+  if (sel && sec) sel.value = sec;
+  renderAdminPriceCatTabs();
+  renderAdminPriceList();
+}
+
+// ── SECTION MANAGEMENT ────────────────────────
+function refreshSectionSelectors() {
+  const secs = state.priceSections || [];
+  const selEl = document.getElementById('p-section-sel');
+  if (selEl) {
+    const cur = selEl.value;
+    selEl.innerHTML = '<option value="">— 選擇分類 —</option>' +
+      secs.map(s => `<option value="${escHtml(s)}">${escHtml(s)}</option>`).join('');
+    if (cur && secs.includes(cur)) selEl.value = cur;
+  }
+  const epEl = document.getElementById('ep-section');
+  if (epEl) {
+    const cur2 = epEl.value;
+    epEl.innerHTML = secs.map(s => `<option value="${escHtml(s)}">${escHtml(s)}</option>`).join('');
+    if (cur2 && secs.includes(cur2)) epEl.value = cur2;
+  }
+}
+
+function showAddSection() {
+  const row = document.getElementById('new-section-row');
+  row.style.display = row.style.display === 'none' ? 'block' : 'none';
+  if (row.style.display === 'block') document.getElementById('new-section-input').focus();
+}
+
+function confirmAddSection() {
+  const val = document.getElementById('new-section-input').value.trim();
+  if (!val) { toast('請輸入分類名稱'); return; }
+  if (!state.priceSections) state.priceSections = [];
+  if (state.priceSections.includes(val)) { toast('此分類已存在'); return; }
+  state.priceSections.push(val);
+  save();
+  refreshSectionSelectors();
+  renderPriceCatTabs();
+  document.getElementById('new-section-input').value = '';
+  document.getElementById('new-section-row').style.display = 'none';
+  toast('✦ 分類已新增：' + val);
+}
+
+function onSectionSel() {}
+
+// ── PACKAGE TOGGLE ────────────────────────────
+function togglePkg(ctx) {
+  const checked = document.getElementById(ctx === 'edit' ? 'ep-has-pkg' : 'p-has-pkg').checked;
+  document.getElementById(ctx === 'edit' ? 'pkg-fields-edit' : 'pkg-fields-add').classList.toggle('show', checked);
+}
+
+// ── ADMIN PRICE LIST ──────────────────────────
+function renderAdminPriceList() {
+  const el = document.getElementById('admin-price-list');
+  if (!el) return;
+  document.getElementById('price-policy-input').value = state.pricePolicy || '';
+  refreshSectionSelectors();
+  renderAdminPriceCatTabs();
+
+  const all    = state.prices || [];
+  const shown  = adminPriceCat ? all.filter(p => p.section === adminPriceCat) : all;
+
+  if (!shown.length) {
+    el.innerHTML = '<div class="empty-msg">此分類尚無價目，請新增</div>'; return;
+  }
+  el.innerHTML = shown.map(p => `
+    <div class="class-item">
+      <div class="class-item-left">
+        <div class="class-item-day">${escHtml(p.section)}</div>
+        <div class="class-item-name">${escHtml(p.label)}</div>
+        <div class="class-item-time">
+          ${escHtml(p.unitPrice)}${p.expire ? '　' + escHtml(p.expire) : ''}
+          ${p.hasPkg && p.pkgPrice ? `&nbsp;｜&nbsp;<span style="font-size:11px;color:var(--brown-pale);">一期${escHtml(p.pkgSessions || '')} ${escHtml(p.pkgPrice)}${p.pkgExpire ? ' · ' + escHtml(p.pkgExpire) : ''}</span>` : ''}
+        </div>
+      </div>
+      <div class="item-actions">
+        <button class="icon-btn" onclick="openPriceEdit('${p.id}')">✏️</button>
+      </div>
+    </div>`).join('');
+}
+
+// ── ADD PRICE ITEM ────────────────────────────
+function doAddPrice() {
+  const section   = document.getElementById('p-section-sel').value;
+  const label     = document.getElementById('p-label').value.trim();
+  const unitPrice = document.getElementById('p-price').value.trim();
+  const expire    = document.getElementById('p-expire').value.trim();
+  const hasPkg    = document.getElementById('p-has-pkg').checked;
+  if (!section)   { toast('請選擇分類'); return; }
+  if (!label)     { toast('請輸入項目名稱'); return; }
+  if (!unitPrice) { toast('請輸入價格'); return; }
+  if (!state.prices) state.prices = [];
+  state.prices.push({ id: uid(), section, label, unitPrice, expire, hasPkg,
+    pkgSessions: hasPkg ? document.getElementById('p-pkg-sessions').value.trim() : '',
+    pkgPrice:    hasPkg ? document.getElementById('p-pkg-price').value.trim() : '',
+    pkgExpire:   hasPkg ? document.getElementById('p-pkg-expire').value.trim() : '' });
+  save();
+  adminPriceCat = section;  // stay on same category
+  renderAdminPriceList(); renderPrices();
+  ['p-label','p-price','p-expire','p-pkg-sessions','p-pkg-price','p-pkg-expire'].forEach(id => { document.getElementById(id).value = ''; });
+  document.getElementById('p-has-pkg').checked = false;
+  document.getElementById('pkg-fields-add').classList.remove('show');
+  toast('✦ 價目已新增');
+}
+
+// ── EDIT PRICE ITEM ───────────────────────────
+function openPriceEdit(id) {
+  const p = (state.prices || []).find(x => x.id === id);
+  if (!p) return;
+  refreshSectionSelectors();
+  document.getElementById('ep-id').value           = p.id;
+  document.getElementById('ep-section').value      = p.section;
+  document.getElementById('ep-label').value        = p.label;
+  document.getElementById('ep-price').value        = p.unitPrice;
+  document.getElementById('ep-expire').value       = p.expire || '';
+  document.getElementById('ep-has-pkg').checked    = !!p.hasPkg;
+  document.getElementById('ep-pkg-sessions').value = p.pkgSessions || '';
+  document.getElementById('ep-pkg-price').value    = p.pkgPrice || '';
+  document.getElementById('ep-pkg-expire').value   = p.pkgExpire || '';
+  document.getElementById('pkg-fields-edit').classList.toggle('show', !!p.hasPkg);
+  document.getElementById('modal-price-edit').classList.add('open');
+}
+
+function savePriceEdit() {
+  const id  = document.getElementById('ep-id').value;
+  const idx = (state.prices || []).findIndex(x => x.id === id);
+  if (idx < 0) return;
+  const label = document.getElementById('ep-label').value.trim();
+  if (!label) { toast('項目名稱不能為空'); return; }
+  const hasPkg = document.getElementById('ep-has-pkg').checked;
+  state.prices[idx] = { id,
+    section:     document.getElementById('ep-section').value,
+    label, unitPrice: document.getElementById('ep-price').value.trim(),
+    expire:      document.getElementById('ep-expire').value.trim(),
+    hasPkg,
+    pkgSessions: hasPkg ? document.getElementById('ep-pkg-sessions').value.trim() : '',
+    pkgPrice:    hasPkg ? document.getElementById('ep-pkg-price').value.trim() : '',
+    pkgExpire:   hasPkg ? document.getElementById('ep-pkg-expire').value.trim() : '' };
+  save(); closeModal('modal-price-edit'); renderAdminPriceList(); renderPrices();
+  toast('✦ 價目已更新');
+}
+
+// ── DELETE PRICE ──────────────────────────────
+function openDelPrice() {
+  document.getElementById('del-pid').value = document.getElementById('ep-id').value;
+  closeModal('modal-price-edit');
+  document.getElementById('modal-price-del').classList.add('open');
+}
+
+function confirmDelPrice() {
+  const id = document.getElementById('del-pid').value;
+  state.prices = (state.prices || []).filter(p => p.id !== id);
+  save(); closeModal('modal-price-del'); renderAdminPriceList(); renderPrices();
+  toast('價目已移除');
+}
+
+// ── PRICE POLICY ──────────────────────────────
+function savePricePolicy() {
+  state.pricePolicy = document.getElementById('price-policy-input').value.trim();
+  save(); renderPrices();
+  toast('備註已儲存');
+}
+
+// ── SCHEDULE RENDER ───────────────────────────
+function renderSchedule() {
+  const el   = document.getElementById('schedule-grid');
+  const note = document.getElementById('schedule-note');
+  note.textContent = state.note;
+
+  // Unique times sorted
+  const times = [...new Set(state.classes.map(c => c.time))].sort();
+  if (times.length === 0) {
+    el.innerHTML = '<p style="text-align:center;padding:32px;color:var(--brown-pale);font-size:13px;letter-spacing:0.1em;">尚無課程</p>';
+    return;
+  }
+
+  // Group times by session: morning(<12), afternoon(12-17), evening(>=17)
+  const sessionOf = t => {
+    const h = parseInt(t.split(':')[0], 10);
+    return h < 12 ? 0 : h < 17 ? 1 : 2;
+  };
+
+  // Build groups preserving order
+  const groups = [];
+  times.forEach(t => {
+    const s = sessionOf(t);
+    if (!groups.length || groups[groups.length-1].session !== s) {
+      groups.push({ session: s, times: [] });
+    }
+    groups[groups.length-1].times.push(t);
+  });
+
+  // Header
+  let html = `
+    <div class="grid-head">
+      ${DAY_NAMES.slice(1).map(d => `<div class="head-cell">${d}</div>`).join('')}
+    </div>`;
+
+  // Groups → time bands
+  groups.forEach((grp, gi) => {
+    grp.times.forEach((t, ti) => {
+      // Separator: dashed line between groups (but not at very start)
+      if (ti === 0 && gi > 0) {
+        html += `<div class="band-gap"></div>`;
+      }
+      html += `<div class="time-row">`;
+      for (let d = 1; d <= 6; d++) {
+        const cs = state.classes.filter(c => c.day === d && c.time === t);
+        html += `<div class="day-cell">`;
+        cs.forEach(c => {
+          // Split name at 3rd char for two-line display matching original
+          const nameParts = splitName(c.name);
+          html += `
+            <div class="class-block${c.hl ? ' is-highlight' : ''}">
+              <div class="class-time">${t}</div>
+              <div class="class-name-line">${nameParts}</div>
+            </div>`;
+        });
+        html += `</div>`;
+      }
+      html += `</div>`;
+    });
+    // Dashed line after group (if not last)
+    if (gi < groups.length - 1) {
+      html += `<div style="border-top:1px dashed var(--dashed);margin:6px 0;"></div>`;
+    }
+  });
+
+  el.innerHTML = html;
+}
+
+// Split Chinese class name into up to two visual lines
+// e.g. "器械皮拉提斯" → "器械\n皮拉提斯"
+function splitName(name) {
+  if (!name) return name;
+  // If name has 4+ chars and no existing split, split after 2-3 chars
+  const n = name.trim();
+  if (n.length >= 5) {
+    const mid = n.length <= 6 ? 2 : 3;
+    return escHtml(n.slice(0, mid)) + '\n' + escHtml(n.slice(mid));
+  }
+  return escHtml(n);
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── ADMIN LIST RENDER ─────────────────────────
+function renderAdminList() {
+  const el = document.getElementById('admin-list');
+  document.getElementById('note-input').value = state.note;
+
+  if (!state.classes.length) {
+    el.innerHTML = '<div class="empty-msg">尚無課程，請新增</div>';
+    renderAdminCalendar();
+    return;
+  }
+
+  const sorted = [...state.classes].sort((a,b) => {
+    const td = a.time.localeCompare(b.time);
+    return td !== 0 ? td : a.day - b.day;
+  });
+
+  el.innerHTML = sorted.map(c => `
+    <div class="class-item">
+      <div class="class-item-left">
+        <div class="class-item-day">
+          ${DAY_NAMES[c.day]}
+          ${c.hl ? '<span class="hl-dot"></span>' : ''}
+        </div>
+        <div class="class-item-name${c.hl ? ' hl' : ''}">${escHtml(c.name)}</div>
+        <div class="class-item-time">${c.time}</div>
+      </div>
+      <div class="item-actions">
+        <button class="icon-btn" onclick="openEdit('${c.id}')" title="編輯">✏️</button>
+        <button class="icon-btn del" onclick="openDel('${c.id}')" title="刪除">🗑</button>
+      </div>
+    </div>
+  `).join('');
+
+  renderAdminCalendar();
+}
+
+// ── CALENDAR VIEW RENDER ──────────────────────
+function renderAdminCalendar() {
+  const grid = document.getElementById('admin-calendar');
+  if (!grid) return;
+
+  // Build a map: day → sorted classes
+  const byDay = {};
+  for (let d = 1; d <= 6; d++) byDay[d] = [];
+  state.classes.forEach(c => {
+    if (c.day >= 1 && c.day <= 6) byDay[c.day].push(c);
+  });
+  for (let d = 1; d <= 6; d++) {
+    byDay[d].sort((a,b) => a.time.localeCompare(b.time));
+  }
+
+  let html = '';
+  for (let d = 1; d <= 6; d++) {
+    const cs = byDay[d];
+    html += `<div class="cal-cell">`;
+    html += `<div class="cal-day-num">${DAY_NAMES[d]}</div>`;
+
+    if (cs.length === 0) {
+      html += `<div style="flex:1;"></div>`;
+    } else {
+      cs.forEach(c => {
+        const shortName = c.name.length > 7 ? c.name.slice(0,6)+'…' : c.name;
+        html += `
+          <div class="cal-pill-wrap">
+            <div class="cal-pill ${c.hl ? 'highlight' : 'normal'}"
+                 onclick="openEdit('${c.id}')"
+                 title="${escHtml(c.name)} — 點擊編輯">
+              <div style="font-size:9px;opacity:0.75;margin-bottom:1px;">${c.time}</div>
+              <div>${escHtml(shortName)}</div>
+            </div>
+            <button class="cal-pill-del"
+                    onclick="event.stopPropagation();openDel('${c.id}')"
+                    title="刪除">×</button>
+          </div>`;
+      });
+    }
+
+    // Quick add button — prefills the add-day selector and scrolls up
+    html += `
+      <button class="cal-add-btn" onclick="calQuickAdd(${d})" title="在${DAY_NAMES[d]}新增">＋</button>
+    </div>`;
+  }
+
+  grid.innerHTML = html;
+}
+
+// Quick-add: set add-day dropdown and scroll to add form
+function calQuickAdd(day) {
+  document.getElementById('add-day').value = day;
+  document.getElementById('add-name').focus();
+  document.querySelector('.admin-body').scrollTo({ top: 0, behavior: 'smooth' });
+  document.querySelector('.admin-body').scrollTop = 0;
+  // scroll the panel itself
+  document.getElementById('admin-panel').scrollTo({ top: 0, behavior: 'smooth' });
+  toast('已切換至 ' + DAY_NAMES[day] + '，請填寫課程資訊');
+}
+
+// ── VIEW SWITCHER ─────────────────────────────
+function switchView(v) {
+  document.getElementById('view-cal').classList.toggle('active',  v === 'cal');
+  document.getElementById('view-list').classList.toggle('active', v === 'list');
+  document.getElementById('tab-cal').classList.toggle('sel',  v === 'cal');
+  document.getElementById('tab-list').classList.toggle('sel', v === 'list');
+}
+
+// ── MODAL UTILS ───────────────────────────────
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+function openPwModal() {
+  document.getElementById('pw-input').value = '';
+  document.getElementById('pw-err').style.display = 'none';
+  document.getElementById('modal-pw').classList.add('open');
+  setTimeout(() => document.getElementById('pw-input').focus(), 120);
+}
+
+function checkPw() {
+  const v = document.getElementById('pw-input').value;
+  if (v === PW) {
+    closeModal('modal-pw');
+    openAdmin();
+  } else {
+    document.getElementById('pw-err').style.display = 'block';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+}
+
+// ── ADMIN ─────────────────────────────────────
+function openAdmin() {
+  renderAdminList();
+  renderAdminPriceList();
+  document.getElementById('admin-panel').classList.add('open');
+}
+
+function closeAdmin() {
+  document.getElementById('admin-panel').classList.remove('open');
+  renderSchedule();
+}
+
+// 儲存變更按鈕 → save first, then show confirm modal
+function openSaveConfirm() {
+  // Also save the note field if filled
+  const noteVal = document.getElementById('note-input').value.trim();
+  if (noteVal) state.note = noteVal;
+  save();
+  document.getElementById('modal-save-confirm').classList.add('open');
+}
+
+// Confirm modal "返回課表" button
+function confirmSaveBack() {
+  closeModal('modal-save-confirm');
+  closeAdmin();
+  toast('✦ 課表已更新');
+}
+
+// ── HIGHLIGHT TOGGLE ──────────────────────────
+function setHL(ctx, val) {
+  const pre = ctx === 'add' ? 'a' : 'e';
+  document.getElementById(`${pre}hl-off`).classList.toggle('sel', !val);
+  document.getElementById(`${pre}hl-on`).classList.toggle('sel',  val);
+  document.getElementById(`${ctx === 'add' ? 'add' : 'edit'}-hl`).value = val;
+}
+
+// ── ADD CLASS ─────────────────────────────────
+function doAddClass() {
+  const day  = parseInt(document.getElementById('add-day').value, 10);
+  const time = document.getElementById('add-time').value;
+  const name = document.getElementById('add-name').value.trim();
+  const hl   = document.getElementById('add-hl').value === 'true';
+
+  if (!time)         { toast('請選擇時間'); return; }
+  if (!name)         { toast('請輸入課程名稱'); return; }
+
+  state.classes.push({ id: uid(), day, time, name, hl });
+  save();
+  renderAdminList();
+  document.getElementById('add-name').value = '';
+  setHL('add', false);
+  toast('✦ 課程已新增');
+}
+
+// ── EDIT CLASS ────────────────────────────────
+function openEdit(id) {
+  const c = state.classes.find(x => x.id === id);
+  if (!c) return;
+  document.getElementById('edit-cid').value  = c.id;
+  document.getElementById('edit-day').value  = c.day;
+  document.getElementById('edit-time').value = c.time;
+  document.getElementById('edit-name').value = c.name;
+  setHL('edit', c.hl);
+  document.getElementById('modal-edit').classList.add('open');
+}
+
+function saveEdit() {
+  const id  = document.getElementById('edit-cid').value;
+  const idx = state.classes.findIndex(x => x.id === id);
+  if (idx < 0) return;
+
+  const name = document.getElementById('edit-name').value.trim();
+  if (!name) { toast('課程名稱不能為空'); return; }
+
+  state.classes[idx] = {
+    id,
+    day:  parseInt(document.getElementById('edit-day').value, 10),
+    time: document.getElementById('edit-time').value,
+    name,
+    hl:   document.getElementById('edit-hl').value === 'true',
+  };
+  save();
+  closeModal('modal-edit');
+  renderAdminList();
+  toast('✦ 課程已更新');
+}
+
+// ── DELETE ────────────────────────────────────
+function openDelFromEdit() {
+  const id = document.getElementById('edit-cid').value;
+  closeModal('modal-edit');
+  openDel(id);
+}
+
+function openDel(id) {
+  document.getElementById('del-cid').value = id;
+  document.getElementById('modal-del').classList.add('open');
+}
+
+function confirmDel() {
+  const id = document.getElementById('del-cid').value;
+  state.classes = state.classes.filter(c => c.id !== id);
+  save();
+  closeModal('modal-del');
+  renderAdminList();
+  toast('課程已移除');
+}
+
+// ── NOTE ─────────────────────────────────────
+function saveNote() {
+  state.note = document.getElementById('note-input').value.trim();
+  save();
+  toast('備註已儲存');
+}
+
+// ── TOAST ─────────────────────────────────────
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+// ── CLOSE MODALS ON OVERLAY CLICK ─────────────
+document.querySelectorAll('.modal-overlay').forEach(ov => {
+  ov.addEventListener('click', e => {
+    if (e.target === ov) ov.classList.remove('open');
+  });
+});
+
+// ── ADMIN TAB SWITCHER ────────────────────────
+function switchAdminTab(t) {
+  ['price','schedule'].forEach(x => {
+    document.getElementById('apage-' + x).classList.toggle('active', x === t);
+    document.getElementById('atab-' + x).classList.toggle('sel',     x === t);
+  });
+}
+
+// ── INIT ──────────────────────────────────────
+load();
+renderPrices();
+renderSchedule();
+</script>
+</body>
+</html>
