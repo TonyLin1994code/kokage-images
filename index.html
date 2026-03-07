@@ -258,7 +258,7 @@ body{font-family:'Noto Serif TC',serif;background:var(--mint);color:var(--ink);o
 </head>
 <body>
 
-<button id="amb" title="環境音">🔇</button>
+
 
 <!-- TICKER -->
 <div class="ticker">
@@ -451,22 +451,6 @@ body{font-family:'Noto Serif TC',serif;background:var(--mint);color:var(--ink);o
 </section>
 
 <script>
-// Ambient water noise
-let actx,nSrc,on=false;
-const btn=document.getElementById('amb');
-btn.addEventListener('click',()=>{
-  if(!on){
-    actx=actx||new(window.AudioContext||window.webkitAudioContext)();
-    const buf=actx.createBuffer(1,actx.sampleRate*2,actx.sampleRate);
-    const d=buf.getChannelData(0);
-    for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;
-    nSrc=actx.createBufferSource();nSrc.buffer=buf;nSrc.loop=true;
-    const bp=actx.createBiquadFilter();bp.type='bandpass';bp.frequency.value=500;bp.Q.value=0.2;
-    const g=actx.createGain();g.gain.value=0.06;
-    nSrc.connect(bp);bp.connect(g);g.connect(actx.destination);
-    nSrc.start();btn.textContent='🔊';on=true;
-  }else{nSrc.stop();btn.textContent='🔇';on=false;}
-});
 </script>
 </body>
 </html>
